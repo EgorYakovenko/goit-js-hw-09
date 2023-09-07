@@ -59,7 +59,6 @@ flatpickr(datetimePicker, {
     }
   },
 });
-
 const startButton = document.querySelector("[data-start]");
 const daysElement = document.querySelector("[data-days]");
 const hoursElement = document.querySelector("[data-hours]");
@@ -67,14 +66,12 @@ const minutesElement = document.querySelector("[data-minutes]");
 const secondsElement = document.querySelector("[data-seconds]");
 
 let countdownInterval;
-
 startButton.addEventListener("click", () => {
   const targetDate = new Date(datetimePicker.value).getTime();
   const timeLeft = calculateTimeLeft(targetDate);
 
   if (timeLeft) {
-    startButton.disabled = true; 
-
+    startButton.disabled = true;
     countdownInterval = setInterval(() => {
       const timeLeft = calculateTimeLeft(targetDate);
 
