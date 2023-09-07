@@ -11,7 +11,6 @@ import Notiflix from 'notiflix';
         return;
       }
 
-      
       function createPromise(position, delay) {
         return new Promise((resolve, reject) => {
           const shouldResolve = Math.random() > 0.3;
@@ -25,14 +24,12 @@ import Notiflix from 'notiflix';
         });
       }
 
-      
       const promises = [];
       for (let i = 1; i <= amount; i++) {
         const currentDelay = delay + (i - 1) * step;
         promises.push(createPromise(i, currentDelay));
       }
 
-      
       for (const promise of promises) {
         try {
           const result = await promise;
