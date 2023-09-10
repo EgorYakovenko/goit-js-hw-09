@@ -1,7 +1,13 @@
 import Notiflix from 'notiflix';
 
- document.querySelector('.form').addEventListener('submit', async function (e) {
-      e.preventDefault();
+
+
+document.querySelector('.form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  
+ const createPromiseButton = document.querySelector('button[type="submit"]');
+  createPromiseButton.disabled = true;
+
       const delay = parseInt(this.elements.delay.value);
       const step = parseInt(this.elements.step.value);
       const amount = parseInt(this.elements.amount.value);

@@ -4,6 +4,14 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import Notiflix from 'notiflix';
 
+
+
+// function offBtn() {
+
+// startButton.disabled = true;
+// }
+// offBtn()
+
 function addLeadingZero(value) {
   return String(value).padStart(2, "0");
 }
@@ -49,14 +57,18 @@ flatpickr(datetimePicker, {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose: (selectedDates) => {
+    // datetimePicker.disabled = true;
     const targetDate = selectedDates[0].getTime();
     const startButton = document.querySelector("[data-start]");
 
     if (calculateTimeLeft(targetDate)) {
       startButton.disabled = false;
+      
     } else {
       startButton.disabled = true;
+      
     }
+    
   },
 });
 const startButton = document.querySelector("[data-start]");
@@ -64,7 +76,7 @@ const daysElement = document.querySelector("[data-days]");
 const hoursElement = document.querySelector("[data-hours]");
 const minutesElement = document.querySelector("[data-minutes]");
 const secondsElement = document.querySelector("[data-seconds]");
-
+startButton.disabled = true;
 let countdownInterval;
 startButton.addEventListener("click", () => {
   const targetDate = new Date(datetimePicker.value).getTime();
@@ -72,6 +84,8 @@ startButton.addEventListener("click", () => {
 
   if (timeLeft) {
     startButton.disabled = true;
+    datetimePicker.disabled = true;
+    
     countdownInterval = setInterval(() => {
       const timeLeft = calculateTimeLeft(targetDate);
 
